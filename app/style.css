@@ -1,0 +1,27 @@
+.comentarios *{
+    display: 5px;
+}
+
+.comentarios label {
+    margin: 5px;
+}
+
+#form-comentario textarea,
+input {
+    display: block;
+    color: rgb(52, 114, 106);
+    background-color: aliceblue;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#form-comentario .btn-submit {
+    width: 100px;
+   margin-top: 10px;
+   padding: 10px;
+}
+
+#form-comentario form {
+   margin: 20px auto 0px auto;
+   padding: 10px;
+}

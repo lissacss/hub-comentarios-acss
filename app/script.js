@@ -1,5 +1,0 @@
-
-
-const submitComment = (event) =>{
-    
-}

@@ -8,9 +8,9 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    color: brown;
+    color: rgb(18, 51, 110);
     font-weight: bolder;
-    border: 3px solid black;
+    border: 3px solid rgb(237, 235, 235);
     border-radius: 10px;
 }
 
@@ -28,7 +28,7 @@ body {
     color: rgb(17, 35, 41);
     border-radius: 5px;
     border: 1px solid black;
-    background-color: antiquewhite;
+    background-color: rgb(215, 231, 250);
 }
 
 #form-comentario .btn-submit{

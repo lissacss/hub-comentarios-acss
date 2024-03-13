@@ -1,5 +1,5 @@
-const formatDate = () =>{
-    const currentDate = new Date();
+const formatDate = (data) =>{
+    const currentDate = new Date(data);
     const options = { 
         day: '2-digit',
         month: 'short',
@@ -11,4 +11,4 @@ const formatDate = () =>{
     return formattedDate.replace(',', ' às') + 'hs';
 }
 
-export { formatDate } 
+export {formatDate}

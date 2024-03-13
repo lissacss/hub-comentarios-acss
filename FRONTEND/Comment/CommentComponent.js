@@ -1,40 +1,41 @@
 import { formatDate } from "../utils";
 
-const gatInputComment = () => {
-    return
-    author: document.getElementsById('inputAuthor')
-    comment: document.getElementsById('inputComment')
+const getInputComment = () =>{
+    return {
+        author: document.getElementById('inputAuthor'),
+        comment: document.getElementById('inputComment')
+    }
 }
 
-const setInputComment = (authorValue, commentValue) => {
-    const { author, comment } = getInputComment();
+const setInputComment = (authorValue, commentValue) =>{
+    const {author, comment} = getInputComment();
     author.value = authorValue
     comment.value = commentValue
-
 }
 
+const getInputCommentValue = () =>{
+    return {
+        author: document.getElementById('inputAuthor').value,
+        comment: document.getElementById('inputComment').value
+    }
+}
 
 const submitComment = (event) => {
     event.preventDefault();
+    const comment = getInputCommentValue()
 
-    const author = inputAuthor.value;
-    const comment = inputComment.value;
-
-    data.push({ author: author, comment: comment })
-    console.log(data)
-
+    //requisção Post para enviar o comment
+    
     loadComment()
 }
-
-const formComentario = document.getElementById('formComment')
-formComentario.addEventListener("submit", submitComment)
 
 const loadComment = () => {
     // Dados carregados da API
     if (data) {
-        displayComment();
+        displayComment(data);
     }
 }
+
 
 const displayComment = (comments) => {
     const divFeed = document.getElementById('comment-feed');
@@ -61,13 +62,15 @@ const displayComment = (comments) => {
     })
 }
 
-const CommentComponent = () => {
-    const formComentario = document.getElementsById('formComment')
-    formComentario.addEventListener('submit', submitComment)
-    window.onload = () => {
-        loadComment()
+
+const CommentComponent = {
+    run: () =>{
+        const formComentario = document.getElementById('formComment')
+        formComentario.addEventListener("submit", submitComment)
+        window.onload = () =>{
+            loadComment();
+        }
     }
 }
 
-
-    
+export {CommentComponent}

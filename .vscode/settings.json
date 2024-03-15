@@ -1,0 +1,9 @@
+{
+    "vscode-pets.petColor": "orange",
+    "vscode-pets.petSize": "medium",
+    "vscode-pets.petType": "snake",
+    "vscode-pets.position": "explorer",
+    "vscode-pets.theme": "forest",
+    "vscode-pets.throwBallWithMouse": true,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome"
+}

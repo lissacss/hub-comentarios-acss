@@ -1,3 +1,3 @@
 import { CommentComponent } from "./Comment/CommentComponent.js";
 
-CommentComponent.run()
+CommentComponent.run();

@@ -14,7 +14,7 @@ body {
     border-radius: 10px;
 }
 
-.comments * {
+.comments *{
     display: block;
 }
 
@@ -23,8 +23,7 @@ body {
     margin-bottom: 10px;
 }
 
-#form-comentario textarea,
-input {
+#form-comentario textarea, input {
     display: block;
     color: rgb(17, 35, 41);
     border-radius: 5px;
@@ -33,43 +32,42 @@ input {
     padding: 5px;
 }
 
-#form-comentario .btn-submit {
+.btn-submit{
     margin-top: 25px;
     padding: 10px;
     width: 100px;
 }
 
 #login-form * {
-    margin-top: 10px;
-    margin-bottom: 10px;
+ margin-top: 10px;
+ margin-bottom: 10px;
 }
 
-
 #login-form,
-#form-comentario {
+#form-comentario{
     height: fit-content;
 }
 
-#form-comentario form {
+#form-comentario form{
     margin: 10px auto 0px auto;
     padding: 10px auto 0px auto;
 }
 
-.date-style {
+.date-style{
     display: inline;
     font-size: smaller;
     height: fit-content;
 }
 
-.disabled {
+.disabled{
     display: none;
 }
 
-.comments {
+.comments{
     transition: all 0.5s ease;
 }
 
-.coments.disabled {
+.comments.disabled{
     opacity: 0;
     pointer-events: none;
 }

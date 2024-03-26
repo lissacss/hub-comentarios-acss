@@ -12,6 +12,7 @@ body {
     font-weight: bolder;
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
     border-radius: 10px;
+    
 }
 
 .comments *{
@@ -22,6 +23,7 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 
 #form-comentario textarea, input {
     display: block;
@@ -70,4 +72,24 @@ body {
 .comments.disabled{
     opacity: 0;
     pointer-events: none;
+}
+
+#comment-feed {
+    max-height: 60vh;
+    max-width: 60vh;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background: #c2c9d2;
+
 }

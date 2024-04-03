@@ -1,11 +1,7 @@
 import { User } from "../../models/user.model.js";
 import { LoginService } from "../../services/login.services.js";
-
-let _currentUser = new User();
-
-const getCurrentUser = () => {
-    return _currentUser;
-}
+import { StorageServices } from "../../services/localStorage.service.js";
+import { setAuthorCommentField } from "../CommentComponent/CommentComponent.js";
 
 
 const getLoginInputs = () => {
@@ -14,7 +10,6 @@ const getLoginInputs = () => {
         password: document.getElementById('password')
     }
 }
-
 
 const handleShowHide = () => {
     const newCommentTag = document.getElementById('form-comentario');
@@ -45,24 +40,21 @@ const handleLogin = (event) => {
     event.preventDefault();
     const { username, password } = getLoginInputs();
 
-    _currentUser = new User(null, username.value, password.value)
+    const usr = new User(null, username.value, password.value)
 
-    LoginService.apiAuthUser(_currentUser).then(result => {
-        _currentUser = new User(result)
-        _currentUser.setPassword(null);
-        userProfileTitle(_currentUser.getFirstname())
+    LoginService.apiAuthUser(usr).then(result => {
 
-        const inputAuthor = document.getElementById('inputAuthor');
-        inputAuthor.value = result.firstname + ' ' + result.lastname;
-        inputAuthor.style.backgroundColor = '#444'
-        inputAuthor.style.color = '#FFF'
+        StorageServices.user.store(result);
+        const currentUser = StorageServices.user.get();
+
+        userProfileTitle(currentUser.getFirstname())
+        setAuthorCommentField(currentUser);
 
         handleShowHide();
     }).catch(error => {
         alert(`Login inválido. Erro:${error.message}`)
     })
 
-    console.log(_currentUser)
 }
 
 
@@ -73,4 +65,4 @@ const LoginComponent = {
     }
 }
 
-export { LoginComponent, getCurrentUser }
+export { LoginComponent }

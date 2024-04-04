@@ -97,7 +97,7 @@ server.post("/comment", (req, res) => {
 });
 
 server.get("/user-comments", (req, res) => {
-  const { userId } = req.body;
+  const  userId  = req.params.userId;
   const query = `   
                 SELECT comment.id,
                 user.firstname as author,

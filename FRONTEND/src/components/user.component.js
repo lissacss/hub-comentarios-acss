@@ -1,10 +1,10 @@
-import { StorageServices } from "../../services/localStorage.service.js";
-import UserService from "../../services/user.services.js";
-import { randomColors } from "../../utils.js";
+import UserService from "../services/user.service.js";
+import { formatDate, randomColors } from "../utils.js";
+import { loadComment } from "./comment.component.js";
 
 const loadUserData = () => {
 
-    displayUserData(StorageServices.user.get())
+    // displayUserData()
 }
 
 const iconeUsuario = (avatarColor) => {
@@ -67,7 +67,7 @@ const displayUserData = (user) => {
 }
 
 const handleMeusComentarios = () => {
-    const userId = StorageServices.user.get().getId()
+    // const userId = 
     UserService.apiGetUserComments(userId).then(data =>{
         displayUserComments(data)
     }).catch(error =>{
@@ -77,7 +77,7 @@ const handleMeusComentarios = () => {
 
 const displayUserComments = (comments) => {
     const divFeed = document.getElementById('comment-feed');
-    divFeed.innerHTML = `<h5 class="border-bottom pb-2 mb-0">Meus Comentários</h5>`
+    divFeed.innerHTML = `<h5 class="border-bottom pb-2 mb-0"><b>Meus Comentários</b></h5>`
     comments.forEach(item => {
         const divDisplay = document.createElement('div');
         divDisplay.className = 'd-flex text-body-secondary pt-3 border-bottom'
@@ -112,6 +112,7 @@ const handleShowHideUser = () => {
     } else {
         userDataTag.classList.add('disabled');
         newCommentTag.classList.remove('disabled');
+        loadComment()
     }
 }
 

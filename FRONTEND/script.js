@@ -1,9 +1,9 @@
-import { LoginComponent } from "./Components/LoginComponent/LoginComponent.js";
-import { CommentComponent } from "./Components/CommentComponent/CommentComponent.js";
-import { UserComponent } from "./Components/UserComponent/UserComponent.js";
-import App from "./app.js";
+import { LoginComponent } from "./src/Components/login.component.js";
+import { CommentComponent } from "./src/Components/comment.component.js"
+import { UserComponent } from "./src/Components/user.component.js";
+import MainView from "./src/view/main.view.js";
 
-App.build();
+MainView.build();
 LoginComponent.run();
 CommentComponent.run();
 UserComponent.run();

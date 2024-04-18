@@ -67,7 +67,7 @@ const MainView = {
         document.body.innerHTML = ``;
         document.body.innerHTML = appStructure;
     },
-    commentsUpdate: (comments, title) => {
+    commentsUpdate: (comments, title, handler) => {
         const divFeed = document.getElementById('feed');
         divFeed.innerHTML = ``
 
@@ -80,6 +80,7 @@ const MainView = {
 
         comments.forEach(item => {
             const commentDiv = document.createElement('div');
+            commentDiv.setAttribute("id", `${item.getAuthor()}-${item.getId()}`);
             commentDiv.className = 'd-flex text-body-secondary pt-3 border-bottom'
             commentDiv.innerHTML = `
             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
@@ -101,6 +102,12 @@ const MainView = {
             commentsGroup.appendChild(commentDiv);
         })
 
+        if (handler) {
+            commentsGroup.addEventListener('click', handler);
+            commentsGroup.addEventListener('contextmenu', handler);
+        }
+
+
         divFeed.appendChild(commentsGroup);
 
         const smallTag = document.createElement('small');
@@ -110,6 +117,8 @@ const MainView = {
         `;
 
         divFeed.appendChild(smallTag);
+
+
     }
 }
 

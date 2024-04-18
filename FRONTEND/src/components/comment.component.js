@@ -17,8 +17,30 @@ const clearCommentField = () => {
     getCommentInput().value = ''
 }
 
+// HANDLER DE EDIÇÃO DE COMENTÁRIOS
 
-const setCommentField = ({firstname, lastname}) => {
+const handleClick = (event) => {
+    event.preventDefault();
+    const alvo = event.target.closest('div').id.split('-')[1];
+    console.log(alvo)
+    if (event.type === 'click') {
+        const isToEdit = window.confirm('Você deseja editar o comentário?')
+        if (isToEdit) {
+            console.log('Botão esquerdo')
+        }
+    } else if (event.type === 'contextmenu') {
+        const isToEdit = window.confirm('Você deseja excluir o comentário?')
+        if (isToEdit) {
+            const isSure = window.confirm('Você tem certeza que quer excluir o comentário?')
+            if (isSure) {
+                console.log('Botão direito')
+            }
+        }
+    }
+
+}
+
+const setCommentField = ({ firstname, lastname }) => {
     const inputAuthor = document.getElementById('inputAuthor');
     inputAuthor.value = firstname + ' ' + lastname;
     inputAuthor.style.backgroundColor = '#444'
@@ -48,7 +70,7 @@ const loadComment = () => {
         const comments = result.map(
             (comment) => new Comment(comment.id, comment.userId, comment.author, comment.comment_text, comment.created_at, comment.updated_at)
         );
-        MainView.commentsUpdate(comments)
+        MainView.commentsUpdate(comments, 'Feed', handleClick)
     }).catch(error => {
         console.error(error);
         alert(error);

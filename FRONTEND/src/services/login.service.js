@@ -26,7 +26,7 @@ const LoginService = {
         });
     });
   },
-  getUserSession: ()=> {
+  getUserSession: () => {
     const token = sessionStorage.getItem('token');
     if (token) {
       const payload = decodeJWT(token);
@@ -37,7 +37,23 @@ const LoginService = {
         return null;
       }
     }
+  },
+  isLoggedIn: () => {
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      return false;
+    }
+    try {
+      const tokenExpireTime = (decodeJWT(token).exp * 1000);
+      if (Date.now() >= tokenExpireTime) {
+        return false;
+      }
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 };
 
-export { LoginService }
+export default LoginService

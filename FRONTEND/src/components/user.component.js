@@ -1,10 +1,12 @@
 import UserService from "../services/user.service.js";
+import LoginService from "../services/login.service.js";
 import { formatDate, randomColors } from "../utils.js";
 import { loadComment } from "./comment.component.js";
+import MainView from '../view/main.view.js';
 
 const loadUserData = () => {
-
-    // displayUserData()
+    const user = LoginService.getUserSession();
+    displayUserData(user);
 }
 
 const iconeUsuario = (avatarColor) => {
@@ -67,51 +69,26 @@ const displayUserData = (user) => {
 }
 
 const handleMeusComentarios = () => {
-    // const userId = 
-    UserService.apiGetUserComments(userId).then(data =>{
-        displayUserComments(data)
-    }).catch(error =>{
+    const user = LoginService.getUserSession();
+    UserService.apiGetUserComments(user.id).then(data => {
+        MainView.commentsUpdate(data, 'Meus Comentários')
+    }).catch(error => {
         alert(error.message)
-    })
-}
-
-const displayUserComments = (comments) => {
-    const divFeed = document.getElementById('comment-feed');
-    divFeed.innerHTML = `<h5 class="border-bottom pb-2 mb-0"><b>Meus Comentários</b></h5>`
-    comments.forEach(item => {
-        const divDisplay = document.createElement('div');
-        divDisplay.className = 'd-flex text-body-secondary pt-3 border-bottom'
-        divDisplay.innerHTML = `
-            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>comentário</title>
-                <rect width="100%" height="100%" fill="#${randomColors().dark}"></rect>
-                <text x="35%" y="50%" fill="#${randomColors().light}"dy=".3em">${item.getAuthor().charAt(0)}</text>
-            </svg>
-            <p class="pb-3 mb-0 small lh-sm text-gray-dark">
-                <strong class="d-block text-gray-dark">@${item.getAuthor()}
-                <span class="date-style badge text-bg-secondary">${formatDate(item.getCreatedAt())}</span>
-                </strong>
-                <span class="comment">
-                ${item.getComment()}
-                </span>
-            </p>        
-        `
-        divFeed.appendChild(divDisplay);
     })
 }
 
 const handleShowHideUser = () => {
     const userDataTag = document.getElementById('user-data');
     const newCommentTag = document.getElementById('form-comentario');
-    if (userDataTag.classList.contains('disabled')) {
+    if (userDataTag.classList.contains('disabled') && LoginService.isLoggedIn()) {
         userDataTag.classList.remove('disabled');
         newCommentTag.classList.add('disabled');
         loadUserData();
     } else {
         userDataTag.classList.add('disabled');
-        newCommentTag.classList.remove('disabled');
+        if (LoginService.isLoggedIn()) {
+            newCommentTag.classList.remove('disabled');
+        }
         loadComment()
     }
 }

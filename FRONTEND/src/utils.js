@@ -16,8 +16,8 @@ const randomInt = (value) => {
 }
 
 const randomColors = () => {
-    let darkPalette = ['070F2B', '1B1A55', '535C91', '9290C3', '030637', '3C0753', '720455']
-    let lightPalette = ['FFBE98', 'FEECE2', 'F6FDC3', 'CDFADB', 'FFF8E3', 'F2F1EB', 'F1EAFF']
+    let darkPalette = ['191970', '000080', '00008B', '0000CD', '483D8B', '4682B4', '708090']
+    let lightPalette = ['B0C4DE', 'ADD8E6', '87CEEB', '87CEFA', '00BFFF', '6495ED', '778899']
 
     let colors = []
     colors.push(darkPalette)

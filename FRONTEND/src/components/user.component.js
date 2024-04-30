@@ -34,6 +34,7 @@ const displayUserData = (user) => {
     newDiv.innerHTML = `
     <div>
     <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
+
     </div>
     ${iconeUsuario(randomColors().dark)}
     <div class="row d-inline-flex text-body-secondary rounded">
@@ -65,7 +66,7 @@ const displayUserData = (user) => {
 
     const btnMeusComentarios = document.getElementById('btnMeusComentarios');
     btnMeusComentarios.addEventListener('click', handleMeusComentarios);
-
+   
 }
 
 const handleMeusComentarios = () => {
@@ -93,12 +94,16 @@ const handleShowHideUser = () => {
     }
 }
 
+const handleUpdateData = () => {}
+
 const UserComponent = {
     run: () => {
         const btnMeusDados = document.getElementById('btnMeusDados');
         btnMeusDados.addEventListener('click', handleShowHideUser);
         const btnSairMDados = document.getElementById('btnSairMDados');
         btnSairMDados.addEventListener('click', handleShowHideUser);
+        const btnUpdateData= document.getElementById('btnUpdateData');
+        btnUpdateData.addEventListener('click', handleUpdateData);
     }
 }
 

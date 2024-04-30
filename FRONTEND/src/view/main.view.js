@@ -48,8 +48,12 @@ const main = `
             <div id="user-content">
 
             </div>
+            <div class="groupButtons">
             <button id="btnSairMDados" class="btn-submit btn btn-dark my-2">Voltar</button>
+            <button id='btnUpdateData' class='btn-submit btn btn-dark my-2'>Update</button>
+            </div>
         </div>
+
     </div>
     <!--FEED: DISPLAY COMMENTS -->
     <div id="feed" class="comments col my-3 p-3 bg-body rounded shadow">

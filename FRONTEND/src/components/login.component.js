@@ -27,7 +27,7 @@ const handleShowHide = () => {
 const userProfileHeader = (name, imgLink) => {
     const aLink = document.getElementById("user-profile-title");
     aLink.innerHTML = ``;
-    aLink.innerHTML = `<img src="${imgLink}" alt="mdo" width="32" height="32" class="rounded-circle">
+    aLink.innerHTML = `<img src="${imgLink?imgLink:''}" alt="mdo" width="32" height="32" class="rounded-circle">
     <p class="small lh-sm text-gray-dark">
         <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
     </p>`;
